@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Is This A Pigeon?</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3 text-center">
+            <img src="static/is-this-a-pigeon.jpeg" alt="">
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <h1>Is This A Pigeon?</h1>
+                    <form method="POST" action="/predict" enctype="multipart/form-data">
+                        <p><input type="file" name="file"></p>
+                        <p><input type="submit" value="Predict" class="btn btn-success"></p>
+                    </form>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages%}
+                    <ul>
+                        {% for message in messages%}
+                        <span class="btn btn-danger">{{ message }}</span>
+                        {% endfor%}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
