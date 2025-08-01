@@ -1,11 +1,9 @@
 import os
 import shutil
-import schedule
 import time
 from threading import Thread
 from flask import Flask, render_template, redirect, flash, url_for, request, abort, after_this_request, send_from_directory
 from werkzeug.utils import secure_filename
-from werkzeug.security import safe_join
 import tensorflow as tf
 import numpy as np
 from keras.models import load_model
@@ -19,7 +17,7 @@ app.config['ALLOWED_EXTENSIONS'] = ['.png', '.jpeg', '.jpg', '.JPEG', '.JPG', '.
 app.config['UPLOAD_FOLDER'] = 'static/uploads/'
 app.config['TEMP_FOLDER'] = 'static/temp/'
 app.config['MAX_CONTENT_LENGTH'] = 12 * 1024 * 1024
-app.config['SECRET_KEY']= 'd0e868c63d531755d47bc2c66ac4647087a63ecdc330bde71c17adb7aef2cc1b'
+app.config['SECRET_KEY']= 'secret-key-goes-here'
 
 base_model = ResNet50V2(weights='imagenet', include_top=False)
 model = load_model('pigeons_cnn.keras')
@@ -73,6 +71,7 @@ def upload_file():
 def serve_file(filename):
 
         return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
 
 
 
