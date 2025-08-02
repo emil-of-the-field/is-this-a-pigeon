@@ -1,0 +1,2 @@
+FLASK_APP=pigeons.py
+TF_ENABLE_ONEDNN_OPTS=0
